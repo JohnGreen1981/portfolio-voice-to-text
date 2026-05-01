@@ -1,29 +1,29 @@
 # Voice To Text Bot
 
-Telegram bot for transcribing voice/audio messages and optionally cleaning up the transcript with GPT.
+Telegram-бот для транскрибации голосовых сообщений и аудиофайлов в текст с опциональной GPT-правкой расшифровки.
 
-This is a sanitized portfolio version. It does not include production `.env` files, user data, audio files, private transcripts, local databases, or deployment notes.
+Это очищенная портфельная версия. В репозитории нет production `.env`, пользовательских данных, аудиофайлов, приватных транскриптов, локальных баз и служебных заметок деплоя.
 
-## What It Demonstrates
+## Что показывает проект
 
-- Speech-to-text workflow in Telegram.
-- AssemblyAI integration.
-- One-click GPT text cleanup after transcription.
-- Inline-button UX for editing and copying results.
-- Docker-based deployment path.
-- AI-assisted development workflow: requirements, implementation via coding assistants, manual scenario checks, cleanup and documentation.
+- Сценарий speech-to-text внутри Telegram.
+- Интеграцию с AssemblyAI.
+- Ручную GPT-правку текста по кнопке после транскрибации.
+- UX на inline-кнопках для редактирования и копирования результата.
+- Docker-сценарий запуска.
+- AI-assisted development: постановка задачи, реализация через coding assistants, ручная проверка сценариев, очистка и документация.
 
-## User Workflow
+## Пользовательский сценарий
 
-1. User sends a voice message or audio file to the bot.
-2. Bot downloads the file and sends it to AssemblyAI.
-3. Bot returns the raw transcript.
-4. User can press `Edit` to run GPT cleanup for that specific transcript.
-5. User can press `Copy` to convert the text to a copy-friendly monospace message.
+1. Пользователь отправляет голосовое сообщение или аудиофайл.
+2. Бот скачивает файл и отправляет его в AssemblyAI.
+3. Бот возвращает сырой transcript.
+4. Пользователь может нажать `Отредактировать`, чтобы применить GPT-правку именно к этой расшифровке.
+5. Пользователь может нажать `Скопировать`, чтобы получить текст в удобном для копирования monospace-формате.
 
-The editor is intentionally not a global mode: the raw transcript is always available first, and GPT cleanup is applied only by explicit user action.
+Редактор специально не сделан глобальным режимом: сначала всегда доступна исходная расшифровка, а GPT-правка применяется только по явному действию пользователя.
 
-## Stack
+## Стек
 
 - Python 3.11
 - aiogram 3
@@ -31,7 +31,7 @@ The editor is intentionally not a global mode: the raw transcript is always avai
 - OpenAI API
 - Docker
 
-## Setup
+## Запуск
 
 ```bash
 python -m venv .venv
@@ -41,7 +41,7 @@ cp .env.example .env
 python bot.py
 ```
 
-Required environment variables:
+Нужные переменные окружения:
 
 ```env
 TELEGRAM_BOT_TOKEN=your_telegram_bot_token
@@ -50,7 +50,7 @@ OPENAI_API_KEY=your_openai_api_key
 OWNER_ID=your_telegram_user_id
 ```
 
-Set `OWNER_ID=0` only for local experiments where access control is not needed.
+`OWNER_ID=0` использовать только для локальных экспериментов, где не нужен контроль доступа.
 
 ## Docker
 
@@ -63,23 +63,23 @@ docker run -d \
   voice-to-text-bot
 ```
 
-## Project Structure
+## Структура
 
 ```text
-bot.py             Telegram handlers and inline-button workflow
-config.py          environment variables and editor prompt
-openai_client.py   AssemblyAI transcription and GPT cleanup calls
-Dockerfile         container image
-requirements.txt   Python dependencies
+bot.py             Telegram handlers и inline-button workflow
+config.py          загрузка env и промпт редактора
+openai_client.py   вызовы AssemblyAI и OpenAI API
+Dockerfile         Docker-образ
+requirements.txt   Python-зависимости
 ```
 
-## Safety Notes
+## Безопасность
 
-- Do not commit `.env`.
-- Do not commit audio files or transcripts from real users.
-- Keep `OWNER_ID` enabled in real deployments.
-- GPT cleanup can change style; keep raw transcripts available when exact wording matters.
+- Не коммитить `.env`.
+- Не коммитить реальные аудиофайлы и транскрипты.
+- В реальном деплое оставлять `OWNER_ID` включённым.
+- GPT-правка может менять стиль текста; если важна дословность, сверяться с исходной расшифровкой.
 
-## Portfolio Note
+## Портфельная рамка
 
-This project is presented as an AI-assisted automation prototype. The focus is workflow design, prompt/control decisions, API integration and practical UX, not a claim of hand-written production backend engineering.
+Проект представлен как прототип автоматизации, собранный с помощью AI-assisted development. Фокус: проектирование пользовательского сценария, промптов и контрольных решений, интеграция API и практичный UX, а не заявление о ручной production backend-разработке.

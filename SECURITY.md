@@ -1,4 +1,3 @@
-# Security
+# Безопасность
 
-Do not commit Telegram tokens, AssemblyAI/OpenAI keys, owner IDs, local user state, audio files, or private transcripts.
-
+Не коммитить Telegram-токены, ключи AssemblyAI/OpenAI, owner ID, локальное состояние пользователя, аудиофайлы и приватные транскрипты.

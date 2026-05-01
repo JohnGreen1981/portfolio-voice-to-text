@@ -1,7 +1,7 @@
-# Cleanup Plan
+# План очистки
 
-- [x] Copy tracked source files from `VoiceToText`.
-- [x] Replace personal owner ID with placeholder.
-- [x] Exclude `.env`, `user_state.db`, `server.rtf`, caches and local agent files.
-- [x] Run syntax check with `python -m py_compile`.
-- [x] Run secret scan before first GitHub push.
+- [x] Перенести отслеживаемые source-файлы из `VoiceToText`.
+- [x] Заменить личный owner ID на placeholder.
+- [x] Исключить `.env`, `user_state.db`, `server.rtf`, кэши и локальные agent-файлы.
+- [x] Проверить синтаксис через `python3 -m py_compile`.
+- [x] Запустить проверку на секреты перед первой публикацией в GitHub.
